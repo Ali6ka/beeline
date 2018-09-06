@@ -24,7 +24,7 @@ public class Person
     private String phoneNumber;
 
     @Column(name = "is_admin")
-    private boolean isAdmin;
+    private Boolean isAdmin;
 
     @OneToMany(
             mappedBy = "person",
