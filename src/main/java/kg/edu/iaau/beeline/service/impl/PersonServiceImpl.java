@@ -4,6 +4,7 @@ import kg.edu.iaau.beeline.entity.Person;
 import kg.edu.iaau.beeline.repository.PersonDAO;
 import kg.edu.iaau.beeline.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,12 @@ public class PersonServiceImpl implements PersonService
     public Person getById(int id)
     {
         return personDAO.getOne(id);
+    }
+
+    @Override
+    public Person findByUsername(String username)
+    {
+        return personDAO.findByUsername(username);
     }
 
     @Override

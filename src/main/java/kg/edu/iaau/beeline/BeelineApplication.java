@@ -6,17 +6,25 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
+@SpringBootApplication
 @Configuration
-public class BeelineApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(BeelineApplication.class, args);
+public class BeelineApplication
+{
+	@Bean
+	public BCryptPasswordEncoder bCryptPasswordEncoder()
+	{
+		return new BCryptPasswordEncoder();
 	}
 
 	@Bean
-	public ModelMapper modelMapper() {
+	public ModelMapper modelMapper()
+	{
 		return new ModelMapper();
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(BeelineApplication.class, args);
 	}
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,9 @@ public class PersonController
     @Autowired
     private MessageSource messageSource;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @GetMapping
     public ResponseEntity<CustomResponse> getPosts()
     {
@@ -51,6 +55,8 @@ public class PersonController
                                             @RequestBody PersonDTO personDTO)
     {
         Person person = mapper.map(personDTO, Person.class);
+        person.setPassword(bCryptPasswordEncoder.encode(person.getPassword()));
+
         Person personCreated = personService.save(person);
         PersonDTO dto = mapper.map(personCreated, PersonDTO.class);
 
