@@ -58,9 +58,4 @@ public class WebSecurity extends WebSecurityConfigurerAdapter
         return new CustomAuthenticationEntryPoint();
     }
 
-    @Bean
-    public AuthenticationFailureHandler authenticationFailureHandler()
-    {
-        return new CustomAuthenticationFailureHandler();
-    }
 }
