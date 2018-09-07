@@ -24,6 +24,7 @@ public class PersonServiceImpl implements PersonService
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Person findByUsername(String username)
     {
         return personDAO.findByUsername(username);
@@ -48,5 +49,11 @@ public class PersonServiceImpl implements PersonService
     public void delete(Person person)
     {
         personDAO.delete(person);
+    }
+
+    @Override
+    public boolean isAdmin(String username)
+    {
+        return findByUsername(username).getIsAdmin();
     }
 }

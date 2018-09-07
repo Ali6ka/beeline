@@ -2,9 +2,16 @@ package kg.edu.iaau.beeline.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import kg.edu.iaau.beeline.other.CustomResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -12,7 +19,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import static kg.edu.iaau.beeline.security.SecurityConstants.HEADER_STRING;
 import static kg.edu.iaau.beeline.security.SecurityConstants.SECRET;
@@ -20,6 +29,8 @@ import static kg.edu.iaau.beeline.security.SecurityConstants.TOKEN_PREFIX;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter
 {
+    @Autowired
+    private MessageSource messageSource;
 
     public JWTAuthorizationFilter(AuthenticationManager authManager)
     {
@@ -54,8 +65,16 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter
 
         if (header == null || !header.startsWith(TOKEN_PREFIX))
         {
-            chain.doFilter(req, res);
-            return;
+            CustomResponse customResponse = new CustomResponse("ERROR",
+                    messageSource.getMessage("notAuthorized", new Object[0], new Locale("")));
+
+            res.setContentType("application/json");
+            res.setStatus(HttpStatus.UNAUTHORIZED.value());
+
+            OutputStream out = res.getOutputStream();
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.writeValue(out, customResponse);
+            out.flush();
         }
 
         UsernamePasswordAuthenticationToken authentication = getAuthentication(req);

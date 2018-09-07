@@ -37,7 +37,6 @@ import static kg.edu.iaau.beeline.security.SecurityConstants.*;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter
 {
-
     @Autowired
     private MessageSource messageSource;
 
@@ -113,9 +112,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .sign(HMAC512(SECRET.getBytes()));
 
-        res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
-        res.setContentType("application/json");
-
         PersonDTO personDTO =  modelMapper.
                 map(personService.findByUsername(username), PersonDTO.class);
 
@@ -130,6 +126,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         CustomResponse customResponse = new CustomResponse("SUCCESS",
                         messageSource.getMessage("successLogin",new Object[0], new Locale("")),
                         jsonNode);
+
+        res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+        res.setContentType("application/json");
+        res.setStatus(HttpStatus.OK.value());
 
         OutputStream out = res.getOutputStream();
         mapper.writeValue(out, customResponse);

@@ -1,5 +1,6 @@
 package kg.edu.iaau.beeline.entity.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -39,6 +40,7 @@ public class PersonDTO
     @Null(groups = {Groups.New.class, Groups.Update.class})
     @JsonProperty(value = "auth_token", access = JsonProperty.Access.READ_ONLY)
     @JsonView({View.AuthDetails.class})
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String authToken;
 
     public Integer getId()

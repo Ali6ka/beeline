@@ -15,4 +15,6 @@ public interface PersonService
     Person save(Person person);
 
     void delete(Person person);
+
+    boolean isAdmin(String username);
 }

@@ -17,7 +17,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.Locale;
 
-
 @ControllerAdvice
 @RestController
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler
@@ -30,14 +29,5 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
     {
         CustomResponse customResponse = new CustomResponse("ERROR", ex.getLocalizedMessage());
         return new ResponseEntity<>(customResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    @ExceptionHandler(UsernameNotFoundException.class)
-    public final ResponseEntity<CustomResponse> handleUsernameNotFoundException()
-    {
-        CustomResponse customResponse = new CustomResponse("ERROR",
-                messageSource.getMessage("userNotFound",new Object[0], new Locale("")));
-
-        return new ResponseEntity<>(customResponse, HttpStatus.NOT_FOUND);
     }
 }
