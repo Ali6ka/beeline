@@ -4,7 +4,8 @@ import kg.edu.iaau.beeline.entity.Person;
 import kg.edu.iaau.beeline.entity.dto.PersonDTO;
 import kg.edu.iaau.beeline.other.CustomResponse;
 import kg.edu.iaau.beeline.service.PersonService;
-import kg.edu.iaau.beeline.transfer.TransferDTO;
+import kg.edu.iaau.beeline.transfer.Groups;
+import kg.edu.iaau.beeline.transfer.View;
 import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -51,7 +51,7 @@ public class PersonController
     }
 
     @PostMapping
-    public ResponseEntity<PersonDTO> create(@Validated(TransferDTO.New.class)
+    public ResponseEntity<PersonDTO> create(@Validated(Groups.New.class)
                                             @RequestBody PersonDTO personDTO)
     {
         Person person = mapper.map(personDTO, Person.class);
@@ -68,7 +68,7 @@ public class PersonController
 
     @PutMapping("/{id}")
     public ResponseEntity updatePerson(@PathVariable int id,
-                                  @Validated(TransferDTO.Update.class)
+                                  @Validated(Groups.Update.class)
                                   @RequestBody PersonDTO personDTO)
     {
         Person person = personService.getById(id);

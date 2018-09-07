@@ -1,34 +1,45 @@
 package kg.edu.iaau.beeline.entity.dto;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import kg.edu.iaau.beeline.transfer.TransferDTO;
-import lombok.Data;
-import org.modelmapper.internal.bytebuddy.implementation.bind.annotation.Default;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonView;
+import kg.edu.iaau.beeline.transfer.Groups;
+import kg.edu.iaau.beeline.transfer.View;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
+@JsonPropertyOrder({"authToken"})
 public class PersonDTO
 {
-    @Null(groups = {TransferDTO.New.class, TransferDTO.Update.class})
+    @Null(groups = {Groups.New.class, Groups.Update.class})
     private Integer id;
 
-    @Null(groups = {TransferDTO.Update.class})
-    @NotNull(groups = {TransferDTO.New.class})
+    @Null(groups = {Groups.Update.class})
+    @NotNull(groups = {Groups.New.class})
+    @JsonView({View.Details.class})
     private String username;
 
-    @Null(groups = {TransferDTO.Update.class})
-    @NotNull(groups = {TransferDTO.New.class})
+    @Null(groups = {Groups.Update.class})
+    @NotNull(groups = {Groups.New.class})
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-    @NotNull(groups = {TransferDTO.New.class})
+    @NotNull(groups = {Groups.New.class})
     private String fullname;
 
-    @NotNull(groups = {TransferDTO.New.class})
+    @NotNull(groups = {Groups.New.class})
+    @JsonProperty(value = "phone_number")
     private String phoneNumber;
 
-    @NotNull(groups = {TransferDTO.New.class})
+    @NotNull(groups = {Groups.New.class})
+    @JsonProperty(value = "is_admin")
     private Boolean isAdmin;
+
+    @Null(groups = {Groups.New.class, Groups.Update.class})
+    @JsonProperty(value = "auth_token", access = JsonProperty.Access.READ_ONLY)
+    @JsonView({View.AuthDetails.class})
+    private String authToken;
 
     public Integer getId()
     {
@@ -88,5 +99,15 @@ public class PersonDTO
     public void setAdmin(Boolean isAdmin)
     {
         this.isAdmin = isAdmin;
+    }
+
+    public String getAuthToken()
+    {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken)
+    {
+        this.authToken = authToken;
     }
 }

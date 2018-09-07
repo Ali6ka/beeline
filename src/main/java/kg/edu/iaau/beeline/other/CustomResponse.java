@@ -14,6 +14,10 @@ public class CustomResponse
 
     private Object data;
 
+    public CustomResponse()
+    {
+    }
+
     public CustomResponse(String status, String message)
     {
         this.status = status;
