@@ -35,12 +35,16 @@ public class WebSecurity extends WebSecurityConfigurerAdapter
     }
 
     @Bean
-    public JWTAuthenticationFilter jwtAuthenticationFilter() throws Exception {
-        return new JWTAuthenticationFilter(authenticationManager());
+    public JWTAuthenticationFilter jwtAuthenticationFilter() throws Exception
+    {
+            final JWTAuthenticationFilter filter = new JWTAuthenticationFilter(authenticationManager());
+            filter.setFilterProcessesUrl("/api/auth");
+            return filter;
     }
 
     @Bean
-    public JWTAuthorizationFilter jwtAuthorizationFilter() throws Exception {
+    public JWTAuthorizationFilter jwtAuthorizationFilter() throws Exception
+    {
         return new JWTAuthorizationFilter(authenticationManager());
     }
 
@@ -51,7 +55,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter
     }
 
     @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider() {
+    public DaoAuthenticationProvider daoAuthenticationProvider()
+    {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(userDetailsService);
         daoAuthenticationProvider.setPasswordEncoder(bCryptPasswordEncoder);

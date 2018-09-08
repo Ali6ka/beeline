@@ -9,6 +9,7 @@ import kg.edu.iaau.beeline.entity.dto.PersonDTO;
 import kg.edu.iaau.beeline.other.CustomResponse;
 import kg.edu.iaau.beeline.service.PersonService;
 import kg.edu.iaau.beeline.transfer.View;
+import kg.edu.iaau.beeline.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -46,6 +47,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private ResponseUtil responseUtil;
+
     public JWTAuthenticationFilter()
     {}
 
@@ -82,13 +86,13 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         if(authException instanceof UsernameNotFoundException) {
             res.setStatus(HttpStatus.NOT_FOUND.value());
-            customResponse = new CustomResponse("ERROR",
-                    messageSource.getMessage("userNotFound",new Object[0], new Locale("")));
+            customResponse = responseUtil.
+                    responseBuilder("ERROR", "userNotFound");
 
         } else if (authException instanceof BadCredentialsException) {
             res.setStatus(HttpStatus.FORBIDDEN.value());
-            customResponse = new CustomResponse("ERROR",
-                    messageSource.getMessage("incorectPassword",new Object[0], new Locale("")));
+            customResponse = responseUtil.
+                    responseBuilder("ERROR", "incorrectPassword");
         } else {
             customResponse = new CustomResponse();
         }
@@ -123,9 +127,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         JsonNode jsonNode = mapper.readTree(personJson);
 
-        CustomResponse customResponse = new CustomResponse("SUCCESS",
-                        messageSource.getMessage("successLogin",new Object[0], new Locale("")),
-                        jsonNode);
+        CustomResponse  customResponse = responseUtil.
+                responseBuilder("ERROR", "successLogin", jsonNode);
+
 
         res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
         res.setContentType("application/json");

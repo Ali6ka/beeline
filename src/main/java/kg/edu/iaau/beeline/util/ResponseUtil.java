@@ -29,4 +29,16 @@ public class ResponseUtil
                 new CustomResponse(status, messageSource.getMessage( messageKey, new Object[0],
                         new Locale(""))), httpStatus);
     }
+
+    public CustomResponse responseBuilder(String status, String messageKey)
+    {
+        return new CustomResponse("status",
+                messageSource.getMessage(messageKey, new Object[0], new Locale("")));
+    }
+
+    public CustomResponse responseBuilder(String status, String messageKey, Object data)
+    {
+        return new CustomResponse("status",
+                messageSource.getMessage(messageKey, new Object[0], new Locale("")), data);
+    }
 }

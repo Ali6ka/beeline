@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kg.edu.iaau.beeline.other.CustomResponse;
+import kg.edu.iaau.beeline.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ import static kg.edu.iaau.beeline.security.SecurityConstants.TOKEN_PREFIX;
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter
 {
     @Autowired
-    private MessageSource messageSource;
+    private ResponseUtil responseUtil;
 
     public JWTAuthorizationFilter(AuthenticationManager authManager)
     {
@@ -65,8 +66,8 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter
 
         if (header == null || !header.startsWith(TOKEN_PREFIX))
         {
-            CustomResponse customResponse = new CustomResponse("ERROR",
-                    messageSource.getMessage("notAuthorized", new Object[0], new Locale("")));
+            CustomResponse customResponse = responseUtil.
+                    responseBuilder("ERROR", "notAuthorized");
 
             res.setContentType("application/json");
             res.setStatus(HttpStatus.UNAUTHORIZED.value());
