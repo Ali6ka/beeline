@@ -33,6 +33,9 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter
     @Autowired
     private ResponseUtil responseUtil;
 
+    @Autowired
+    private ObjectMapper mapper;
+
     public JWTAuthorizationFilter(AuthenticationManager authManager)
     {
         super(authManager);
@@ -73,7 +76,6 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter
             res.setStatus(HttpStatus.UNAUTHORIZED.value());
 
             OutputStream out = res.getOutputStream();
-            ObjectMapper mapper = new ObjectMapper();
             mapper.writeValue(out, customResponse);
             out.flush();
         }

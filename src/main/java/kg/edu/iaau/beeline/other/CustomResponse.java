@@ -1,5 +1,7 @@
 package kg.edu.iaau.beeline.other;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import lombok.Data;
 
 import java.util.Collections;
@@ -22,7 +24,7 @@ public class CustomResponse
     {
         this.status = status;
         this.message = message;
-        this.data = Collections.EMPTY_LIST;
+        this.data = new Object();
     }
 
     public CustomResponse(String status, String message, Object data)

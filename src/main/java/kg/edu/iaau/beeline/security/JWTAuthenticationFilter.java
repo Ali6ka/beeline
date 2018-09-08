@@ -39,13 +39,13 @@ import static kg.edu.iaau.beeline.security.SecurityConstants.*;
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter
 {
     @Autowired
-    private MessageSource messageSource;
-
-    @Autowired
     private PersonService personService;
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private ObjectMapper mapper;
 
     @Autowired
     private ResponseUtil responseUtil;
@@ -109,7 +109,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain chain, Authentication auth) throws IOException, ServletException
     {
         String username = ((User) auth.getPrincipal()).getUsername();
-        ObjectMapper mapper = new ObjectMapper();
 
         String token = JWT.create()
                 .withSubject((username))

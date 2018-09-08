@@ -17,6 +17,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter
 {
+    private static final String AUTH_URL = "/api/auth";
+
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
     @Autowired
@@ -32,20 +34,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter
                 .addFilter(jwtAuthenticationFilter())
                 .addFilter(jwtAuthorizationFilter())
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-    }
-
-    @Bean
-    public JWTAuthenticationFilter jwtAuthenticationFilter() throws Exception
-    {
-            final JWTAuthenticationFilter filter = new JWTAuthenticationFilter(authenticationManager());
-            filter.setFilterProcessesUrl("/api/auth");
-            return filter;
-    }
-
-    @Bean
-    public JWTAuthorizationFilter jwtAuthorizationFilter() throws Exception
-    {
-        return new JWTAuthorizationFilter(authenticationManager());
     }
 
     @Override
@@ -70,6 +58,20 @@ public class WebSecurity extends WebSecurityConfigurerAdapter
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
         return source;
+    }
+
+    @Bean
+    public JWTAuthenticationFilter jwtAuthenticationFilter() throws Exception
+    {
+        final JWTAuthenticationFilter filter = new JWTAuthenticationFilter(authenticationManager());
+        filter.setFilterProcessesUrl(AUTH_URL);
+        return filter;
+    }
+
+    @Bean
+    public JWTAuthorizationFilter jwtAuthorizationFilter() throws Exception
+    {
+        return new JWTAuthorizationFilter(authenticationManager());
     }
 
 }
