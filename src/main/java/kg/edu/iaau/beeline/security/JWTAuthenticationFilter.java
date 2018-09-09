@@ -12,7 +12,6 @@ import kg.edu.iaau.beeline.transfer.View;
 import kg.edu.iaau.beeline.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -31,7 +30,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 import static kg.edu.iaau.beeline.security.SecurityConstants.*;

@@ -1,9 +1,5 @@
 package kg.edu.iaau.beeline.entity.dto;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import kg.edu.iaau.beeline.transfer.View;
-
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
 import static kg.edu.iaau.beeline.transfer.Groups.New;

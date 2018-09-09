@@ -14,11 +14,11 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import static kg.edu.iaau.beeline.security.SecurityConstants.AUTH_URL;
+
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter
 {
-    private static final String AUTH_URL = "/api/auth";
-
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
     @Autowired

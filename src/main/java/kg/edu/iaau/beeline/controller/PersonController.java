@@ -2,10 +2,8 @@ package kg.edu.iaau.beeline.controller;
 
 import kg.edu.iaau.beeline.entity.Person;
 import kg.edu.iaau.beeline.entity.dto.PersonDTO;
-import kg.edu.iaau.beeline.other.CustomResponse;
 import kg.edu.iaau.beeline.service.PersonService;
 import kg.edu.iaau.beeline.transfer.Groups;
-import kg.edu.iaau.beeline.transfer.View;
 import kg.edu.iaau.beeline.util.ResponseUtil;
 import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
 @RestController
@@ -51,6 +48,7 @@ public class PersonController
         }
 
         List<Person> personList = personService.getAll();
+
         List<PersonDTO> personDTOList = personList.stream()
                 .map(person -> mapper.map(person, PersonDTO.class))
                 .collect(Collectors.toList());

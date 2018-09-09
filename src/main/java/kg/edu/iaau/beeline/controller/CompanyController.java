@@ -96,7 +96,7 @@ public class CompanyController
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deletePerson(@PathVariable int id, Principal principal)
+    public ResponseEntity deleteCompany(@PathVariable int id, Principal principal)
     {
         if(!personService.isAdmin(principal.getName()))
         {

@@ -1,11 +1,6 @@
 package kg.edu.iaau.beeline.other;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import lombok.Data;
-
-import java.util.Collections;
-import java.util.List;
 
 @Data
 public class CustomResponse

@@ -3,7 +3,6 @@ package kg.edu.iaau.beeline.service;
 import kg.edu.iaau.beeline.entity.Company;
 import kg.edu.iaau.beeline.entity.Person;
 import kg.edu.iaau.beeline.entity.Point;
-import org.springframework.security.core.userdetails.User;
 
 import java.util.List;
 

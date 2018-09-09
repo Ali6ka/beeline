@@ -6,13 +6,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import kg.edu.iaau.beeline.other.CustomResponse;
 import kg.edu.iaau.beeline.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -22,11 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Locale;
 
-import static kg.edu.iaau.beeline.security.SecurityConstants.HEADER_STRING;
-import static kg.edu.iaau.beeline.security.SecurityConstants.SECRET;
-import static kg.edu.iaau.beeline.security.SecurityConstants.TOKEN_PREFIX;
+import static kg.edu.iaau.beeline.security.SecurityConstants.*;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter
 {

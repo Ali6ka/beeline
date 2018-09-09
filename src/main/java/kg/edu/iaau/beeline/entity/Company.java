@@ -1,7 +1,5 @@
 package kg.edu.iaau.beeline.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import java.util.Set;
 
