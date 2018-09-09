@@ -9,7 +9,6 @@ import kg.edu.iaau.beeline.service.PersonService;
 import kg.edu.iaau.beeline.service.PointService;
 import kg.edu.iaau.beeline.util.MapperUtil;
 import kg.edu.iaau.beeline.util.ResponseUtil;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,9 +34,6 @@ public class PointController
 
     @Autowired
     private PointService pointService;
-
-    @Autowired
-    private ModelMapper mapper;
 
     @Autowired
     private ResponseUtil responseUtil;

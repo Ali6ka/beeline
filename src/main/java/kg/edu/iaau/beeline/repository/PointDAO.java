@@ -11,9 +11,9 @@ import java.util.List;
 @Repository
 public interface PointDAO extends JpaRepository<Point, Integer>
 {
-    List<Point> getAllByCompany(Company company);
+    List<Point> getAllByCompanyOrderById(Company company);
 
-    List<Point> getAllByPerson(Person person);
+    List<Point> getAllByPersonOrderById(Person person);
 
-    List<Point> getAllByPersonAndCompany(Person person, Company company);
+    List<Point> getAllByPersonAndCompanyOrderById(Person person, Company company);
 }

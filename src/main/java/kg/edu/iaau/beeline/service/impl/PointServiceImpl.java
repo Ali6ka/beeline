@@ -31,19 +31,19 @@ public class PointServiceImpl implements PointService
     @Override
     public List<Point> getByCompany(Company company)
     {
-        return pointDAO.getAllByCompany(company);
+        return pointDAO.getAllByCompanyOrderById(company);
     }
 
     @Override
     public List<Point> getByUser(Person person)
     {
-        return pointDAO.getAllByPerson(person);
+        return pointDAO.getAllByPersonOrderById(person);
     }
 
     @Override
     public List<Point> getByUserAndCompany(Person person, Company company)
     {
-        return pointDAO.getAllByPersonAndCompany(person, company);
+        return pointDAO.getAllByPersonAndCompanyOrderById(person, company);
     }
 
     @Override

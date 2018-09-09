@@ -4,6 +4,7 @@ import kg.edu.iaau.beeline.entity.Person;
 import kg.edu.iaau.beeline.repository.PersonDAO;
 import kg.edu.iaau.beeline.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,7 +34,7 @@ public class PersonServiceImpl implements PersonService
     @Transactional(readOnly = true)
     public List<Person> getAll()
     {
-        return personDAO.findAll();
+        return personDAO.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override

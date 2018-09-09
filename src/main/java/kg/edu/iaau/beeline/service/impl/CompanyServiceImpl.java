@@ -4,6 +4,7 @@ import kg.edu.iaau.beeline.entity.Company;
 import kg.edu.iaau.beeline.repository.CompanyDAO;
 import kg.edu.iaau.beeline.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +27,7 @@ public class CompanyServiceImpl implements CompanyService
     @Transactional(readOnly = true)
     public List<Company> getAll()
     {
-        return companyDAO.findAll();
+        return companyDAO.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override
