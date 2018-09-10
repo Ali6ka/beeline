@@ -1,0 +1,50 @@
+/**** MEDIA ****/
+
+@media only screen and (max-width: 1280px) {
+
+}
+
+@media only screen and (max-width: 1200px) {
+
+}
+
+@media only screen and (max-width: 1025px) {
+	.news {
+		.button-group>div {
+			margin-bottom: 10px;
+		}	
+	}	
+}
+
+@media only screen and (max-width: 768px) {
+	.page-cont {
+		padding: 0;	
+	}
+
+	.content-wrap {
+		min-height: 0;	
+	}
+
+	.sidebar, .content-wrap {
+		min-height: initial !important;	
+	}
+
+	.sidebar.custom {
+		position: relative;
+		padding: 0;
+		
+		&.hided {
+			display: none;
+		}	
+	}
+	.nav-tabs-vertical>.tab-content>.has-padding{
+		padding-top:0;
+	}
+}
+
+
+@media only screen and (max-width: 540px) {
+
+}
+
+/**** MEDIA ****/
