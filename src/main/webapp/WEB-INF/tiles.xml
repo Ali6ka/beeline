@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <!-- Header and footer and gridmenu -->
+    <definition name=".footer" template="/WEB-INF/views/template/footer.jsp"></definition>
+    <definition name=".header" template="/WEB-INF/views/template/header.jsp"></definition>
+    <definition name=".gridmenu" template="/WEB-INF/views/template/gridmenu.jsp"></definition>
+
+    <!-- Master -->
+    <definition name="master" template="/WEB-INF/views/template/master.jsp">
+        <put-attribute name="header" value=".header" />
+        <put-attribute name="gridmenu" value=".gridmenu" />
+        <put-attribute name="page-header" value="" />
+        <put-attribute name="page-content" value="" />
+        <put-attribute name="footer" value=".footer" />
+    </definition>
+
+    <definition name="master_second" template="/WEB-INF/views/template/master_second.jsp">
+
+    </definition>
+</tiles-definitions>

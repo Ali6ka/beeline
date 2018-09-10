@@ -61,7 +61,9 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter
     {
         String header = req.getHeader(HEADER_STRING);
 
-        if (header == null || !header.startsWith(TOKEN_PREFIX))
+        System.out.println(req.getRequestURL());
+        if (((header == null || !header.startsWith(TOKEN_PREFIX)) &&
+                req.getRequestURL().toString().contains("api")))
         {
             CustomResponse customResponse = responseUtil.
                     responseBuilder("ERROR", "notAuthorized");

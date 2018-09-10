@@ -1,4 +1,4 @@
-package kg.edu.iaau.beeline.controller;
+package kg.edu.iaau.beeline.controller.rest;
 
 import kg.edu.iaau.beeline.entity.Company;
 import kg.edu.iaau.beeline.entity.dto.CompanyDTO;

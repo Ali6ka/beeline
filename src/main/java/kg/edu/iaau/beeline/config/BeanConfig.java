@@ -10,10 +10,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesView;
 
 @Configuration
+
 public class BeanConfig
 {
     @Bean
@@ -38,15 +41,16 @@ public class BeanConfig
         return mapper;
     }
 
-    public void addResourceHandlers(ResourceHandlerRegistry registry)
-    {
-        registry.addResourceHandler(new String[]{"/assets/**"})
-                .addResourceLocations(new String[]{"/assets/"}).setCachePeriod(31556926);
-    }
-
     @Bean
     public MasterPreparer masterPreparer() {
         return new MasterPreparer();
+    }
+
+    @Bean
+    public UrlBasedViewResolver viewResolver() {
+        UrlBasedViewResolver tilesViewResolver = new UrlBasedViewResolver();
+        tilesViewResolver.setViewClass(TilesView.class);
+        return tilesViewResolver;
     }
 
     @Bean

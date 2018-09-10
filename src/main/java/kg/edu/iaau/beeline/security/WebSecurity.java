@@ -28,16 +28,13 @@ public class WebSecurity extends WebSecurityConfigurerAdapter
     protected void configure(HttpSecurity http) throws Exception
     {
 
-        http.cors().and().csrf().disable().authorizeRequests()
+        http.cors().and().authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").permitAll()
-                .and()
-                .logout().permitAll()
+                .formLogin().permitAll()
                 .and()
                 .addFilter(jwtAuthenticationFilter())
-                .addFilter(jwtAuthorizationFilter())
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .addFilter(jwtAuthorizationFilter());
     }
 
     @Override
