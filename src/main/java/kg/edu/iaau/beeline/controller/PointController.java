@@ -23,7 +23,7 @@ import static kg.edu.iaau.beeline.transfer.Groups.New;
 import static kg.edu.iaau.beeline.transfer.Groups.Update;
 
 @RestController
-@RequestMapping(value = "/points")
+@RequestMapping(value = "/api/points")
 public class PointController
 {
     @Autowired

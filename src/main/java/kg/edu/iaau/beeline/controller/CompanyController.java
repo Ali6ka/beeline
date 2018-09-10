@@ -22,7 +22,7 @@ import static kg.edu.iaau.beeline.transfer.Groups.New;
 import static kg.edu.iaau.beeline.transfer.Groups.Update;
 
 @RestController
-@RequestMapping(value = "/companies")
+@RequestMapping(value = "/api/companies")
 public class CompanyController
 {
     @Autowired
