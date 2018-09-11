@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AdminController
 {
     @RequestMapping(
-            value = {"/"},
+            value = {"/admin"},
             method = {RequestMethod.GET})
     public String getDashboard()
     {

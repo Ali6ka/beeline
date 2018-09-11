@@ -76,12 +76,6 @@
         </div>
     </div>
     <div class="site-menubar-footer">
-        <a href="javascript: void(0);" class="fold-show" data-placement="top" data-toggle="tooltip" data-original-title="Settings">
-            <span class="icon wb-settings" aria-hidden="true"></span>
-        </a>
-        <a href="javascript: void(0);" data-placement="top" data-toggle="tooltip" data-original-title="Lock">
-            <span class="icon wb-eye-close" aria-hidden="true"></span>
-        </a>
         <a href="<c:url value="/logout"/>" data-placement="top" data-toggle="tooltip" data-original-title="Logout">
             <span class="icon wb-power" aria-hidden="true"></span>
         </a>
