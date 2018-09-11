@@ -16,9 +16,8 @@ public class Company
     private  String website;
 
     @OneToMany(
-            mappedBy = "company",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+            fetch = FetchType.LAZY,
+            mappedBy = "company"
     )
     private Set<Point> points;
 
