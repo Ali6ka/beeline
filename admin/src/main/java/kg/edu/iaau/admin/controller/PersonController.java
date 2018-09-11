@@ -67,19 +67,20 @@ public class PersonController
                              @Valid @ModelAttribute("user") Person person,
                              BindingResult result, Model model)
     {
+        if(result.hasErrors()) {
+            redAttrs.addFlashAttribute("result", "fail");
+            return "redirect:/admin/users";
+        }
+
         if(!personService.isAdmin(principal.getName()))
         {
             return "accessDenied";
-
         }
 
         if (person.getPassword() != null){
             person.setPassword(bCryptPasswordEncoder.encode(person.getPassword()));
-        }
-
-        if(result.hasErrors()) {
-            redAttrs.addFlashAttribute("result", "fail");
-            return "redirect:/admin/users";
+        } else {
+            person.setPassword(personService.getById(person.getId()).getPassword());
         }
 
         personService.save(person);
