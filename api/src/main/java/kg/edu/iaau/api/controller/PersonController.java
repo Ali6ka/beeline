@@ -1,4 +1,4 @@
-package kg.edu.iaau.core_api.controller;
+package kg.edu.iaau.api.controller;
 
 import kg.edu.iaau.api.util.ResponseUtil;
 import kg.edu.iaau.core.entity.Person;
@@ -30,16 +30,13 @@ public class PersonController
     private ModelMapper mapper;
 
     @Autowired
-    private MessageSource messageSource;
-
-    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private ResponseUtil responseUtil;
 
     @GetMapping
-    public ResponseEntity getPosts(Principal principal)
+    public ResponseEntity getPersons(Principal principal)
     {
         if(!personService.isAdmin(principal.getName()))
         {
@@ -58,7 +55,7 @@ public class PersonController
     }
 
     @PostMapping
-    public ResponseEntity create(Principal principal, @Validated(Groups.New.class)
+    public ResponseEntity createPerson(Principal principal, @Validated(Groups.New.class)
                                             @RequestBody PersonDTO personDTO)
     {
         if(!personService.isAdmin(principal.getName()))

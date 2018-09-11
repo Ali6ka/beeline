@@ -1,4 +1,4 @@
-package kg.edu.iaau.core_api.controller;
+package kg.edu.iaau.api.controller;
 
 import kg.edu.iaau.api.util.ResponseUtil;
 import kg.edu.iaau.core.entity.Company;
