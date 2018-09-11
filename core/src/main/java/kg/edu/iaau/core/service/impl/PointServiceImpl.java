@@ -6,6 +6,7 @@ import kg.edu.iaau.core.entity.Point;
 import kg.edu.iaau.core.repository.PointDAO;
 import kg.edu.iaau.core.service.PointService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class PointServiceImpl implements PointService
     @Override
     public List<Point> getAll()
     {
-        return pointDAO.findAll();
+        return pointDAO.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override

@@ -9,7 +9,7 @@
 
     <tiles:putAttribute name="title" value="Access Denied" />
     <tiles:putAttribute name="sidebar">
-        <cm:sidebar/>
+        <cm:sidebarAdmin/>
     </tiles:putAttribute>
 
     <tiles:putAttribute name="page-header">

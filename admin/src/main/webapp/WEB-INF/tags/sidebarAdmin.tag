@@ -9,7 +9,7 @@
         <div class="scrollable-container" style="height: 844.984px; width: 275px;">
             <div class="scrollable-content" style="width: 260px;">
                 <ul class="site-menu" data-plugin="menu" style="transform: translate3d(0px, 0px, 0px);">
-                    <li class="site-menu-category">User Role management</li>
+                    <li class="site-menu-category">Admin panel</li>
                     <li class="site-menu-item has-sub">
                         <a href="javascript:void(0)">
                             <i class="site-menu-icon fa-users" aria-hidden="true"></i>
