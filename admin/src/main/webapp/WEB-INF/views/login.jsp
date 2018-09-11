@@ -29,7 +29,7 @@
                             <img class="brand-img" src="../../assets//images/logo-blue.png" alt="...">
                             <h2 class="brand-text font-size-18">IAU PITV</h2>
                         </div>
-                        <form method="post" action="/j_spring_security_check">
+                        <form method="post" action="login">
                             <div class="form-group form-material floating" data-plugin="formMaterial">
                                 <input type="text" class="form-control" name="ssoId" />
                                 <label class="floating-label">Login</label>
