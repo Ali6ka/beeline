@@ -18,12 +18,12 @@
                         </a>
                         <ul class="site-menu-sub">
                             <li class="site-menu-item">
-                                <a class="animsition-link" href="<c:url value="/admin/user/list"/>">
+                                <a class="animsition-link" href="<c:url value="/admin/users"/>">
                                     <span class="site-menu-title">User list</span>
                                 </a>
                             </li>
                             <li class="site-menu-item">
-                                <a class="animsition-link" href="<c:url value="/admin/user/new"/>">
+                                <a class="animsition-link" href="<c:url value="/admin/users/new"/>">
                                     <span class="site-menu-title">Create user</span>
                                 </a>
                             </li>
@@ -32,96 +32,37 @@
                     <li class="site-menu-item has-sub">
                         <a href="javascript:void(0)">
                             <i class="site-menu-icon fa-drivers-license-o" aria-hidden="true"></i>
-                            <span class="site-menu-title">Role</span>
+                            <span class="site-menu-title">Company</span>
                             <span class="site-menu-arrow"></span>
                         </a>
                         <ul class="site-menu-sub">
                             <li class="site-menu-item">
-                                <a class="animsition-link" href="<c:url value="/admin/role/list"/>">
-                                    <span class="site-menu-title">Role list</span>
+                                <a class="animsition-link" href="<c:url value="/admin/companies"/>">
+                                    <span class="site-menu-title">Company list</span>
                                 </a>
                             </li>
                             <li class="site-menu-item">
-                                <a class="animsition-link" href="<c:url value="/admin/role/new"/>">
-                                    <span class="site-menu-title">Create role</span>
+                                <a class="animsition-link" href="<c:url value="/admin/companies/new"/>">
+                                    <span class="site-menu-title">Create company</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="site-menu-category">Device management</li>
                     <li class="site-menu-item has-sub">
                         <a href="javascript:void(0)">
                             <i class="site-menu-icon wb-table" aria-hidden="true"></i>
-                            <span class="site-menu-title">Block</span>
+                            <span class="site-menu-title">Point</span>
                             <span class="site-menu-arrow"></span>
                         </a>
                         <ul class="site-menu-sub">
                             <li class="site-menu-item">
-                                <a class="animsition-link" href="<c:url value="/admin/block/list"/>">
-                                    <span class="site-menu-title">Block list</span>
+                                <a class="animsition-link" href="<c:url value="/admin/points"/>">
+                                    <span class="site-menu-title">Point list</span>
                                 </a>
                             </li>
                             <li class="site-menu-item">
-                                <a class="animsition-link" href="<c:url value="/admin/block/new"/>">
-                                    <span class="site-menu-title">Create block</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="site-menu-item has-sub">
-                        <a href="javascript:void(0)">
-                            <i class="site-menu-icon fa-desktop" aria-hidden="true"></i>
-                            <span class="site-menu-title">Device</span>
-                            <span class="site-menu-arrow"></span>
-                        </a>
-                        <ul class="site-menu-sub">
-                            <li class="site-menu-item">
-                                <a class="animsition-link" href="<c:url value="/admin/device/list"/>">
-                                    <span class="site-menu-title">Device list</span>
-                                </a>
-                            </li>
-                            <li class="site-menu-item">
-                                <a class="animsition-link" href="<c:url value="/admin/device/new"/>">
-                                    <span class="site-menu-title">Create device</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="site-menu-category">Faculty management</li>
-                    <li class="site-menu-item has-sub">
-                        <a href="javascript:void(0)">
-                            <i class="site-menu-icon fa-university" aria-hidden="true"></i>
-                            <span class="site-menu-title">Faculty</span>
-                            <span class="site-menu-arrow"></span>
-                        </a>
-                        <ul class="site-menu-sub">
-                            <li class="site-menu-item">
-                                <a class="animsition-link" href="<c:url value="/admin/faculty/list"/>">
-                                    <span class="site-menu-title">Faculty list</span>
-                                </a>
-                            </li>
-                            <li class="site-menu-item">
-                                <a class="animsition-link" href="<c:url value="/admin/faculty/new"/>">
-                                    <span class="site-menu-title">Create faculty</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="site-menu-item has-sub">
-                        <a href="javascript:void(0)">
-                            <i class="site-menu-icon fa-mortar-board" aria-hidden="true"></i>
-                            <span class="site-menu-title">Department</span>
-                            <span class="site-menu-arrow"></span>
-                        </a>
-                        <ul class="site-menu-sub">
-                            <li class="site-menu-item">
-                                <a class="animsition-link" href="<c:url value="/admin/department/list"/>">
-                                    <span class="site-menu-title">Department list</span>
-                                </a>
-                            </li>
-                            <li class="site-menu-item">
-                                <a class="animsition-link" href="<c:url value="/admin/department/new"/>">
-                                    <span class="site-menu-title">Create department</span>
+                                <a class="animsition-link" href="<c:url value="/admin/points/new"/>">
+                                    <span class="site-menu-title">Create point</span>
                                 </a>
                             </li>
                         </ul>

@@ -69,16 +69,6 @@
     </div>
     <div class="page-content">
         <tiles:insertAttribute name="page-content" />
-
-        <div class="site-action" data-plugin="actionBtn">
-            <a href="<c:url value=""/> ">
-                <button type="button" class="site-action-toggle btn-raised btn btn-info btn-floating">
-                    <i class="front-icon wb-plus animation-scale-up" aria-hidden="true"></i>
-                    <i class="back-icon wb-close animation-scale-up" aria-hidden="true"></i>
-                </button>
-            </a>
-            </div>
-        </div>
     </div>
 </div>
 <tiles:insertAttribute name="footer" />

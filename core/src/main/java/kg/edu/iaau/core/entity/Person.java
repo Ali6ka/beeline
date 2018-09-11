@@ -25,9 +25,8 @@ public class Person
     private boolean isAdmin;
 
     @OneToMany(
-            mappedBy = "person",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+            fetch = FetchType.LAZY,
+            mappedBy = "person"
     )
     private Set<Point> points;
 
